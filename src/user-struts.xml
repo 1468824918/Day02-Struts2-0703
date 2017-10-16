@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--设置当前环境为开发模式,此模式log日志比较相信,发布时需要关闭-->
+    <constant name="struts.devMode" value="true"/>
+    <!--用户模块-->
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <package name="user" extends="struts-default" namespace="/user">
+        <!--定义全局结果-->
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <!--定义动作: -->
+        <action name="*_UI"
+                class="com.lamou.action.CustomUserAction"
+                method="{1}_UI">
+            <result name="success">/success.jsp</result>
+            <!--登录失败回到注册页面-->
+            <result name="register" type="redirect">/register.jsp</result>
+            <!--注册成功回到登录界面-->
+            <result name="login" type="redirect">/login.jsp</result>
+        </action>
+    </package>
+</struts>

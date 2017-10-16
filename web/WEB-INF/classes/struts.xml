@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="day02" extends="struts-default">
+        <action name="*_user"
+                class="com.lamou.action.UserAction"
+                method="{1}">
+            <result name="success">/success.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="login"
+                class="com.lamou.action.ModelUserAction"
+                method="login">
+            <result name="success">/success.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="register"
+                class="com.lamou.action.ModelUserAction"
+                method="register">
+            <!--如果注册成功跳转到登录界面-->
+            <result name="success">/success.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+    </package>
+    <!--添加struts的其他配置文件-->
+    <!--<include file="user-struts.xml"/>-->
+
+
+
+    <package name="batch" extends="struts-default">
+        <action name="*"
+                class="com.lamou.action.BatchAction"
+                method="{1}">
+            <result name="success">/success.jsp</result>
+        </action>
+    </package>
+</struts>

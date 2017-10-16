@@ -1,0 +1,17 @@
+一.数据传递
+1.属性驱动
+    a.动作类中创建与页面提交的name属性同名的成员变量;
+    b.动作类中提供成员变量的getter和setter方法;
+    c.在动作方法中可以通过成员变量页面提交的数据;
+2.模型驱动
+    a.建立实体类,实体类中的成员变量名称与页面提交的那么属性同名;
+    b.为实体类中的成员变量提供getter和setter方法;
+    c.让动作类implement模型驱动接口ModelDriven<T>,其中泛型T代表要接收页面数据的实体类;
+    d.实现ModelDriven接口中的抽象方法T getModel();
+    e.在动作类中定义实体类类型的成员变量,用于getModel方法的返回值,即将页面提交的数据均放在改对象中;
+    f.在动作方法中可以通过实体类成员变量获取页面提交的数据;
+    备注: getModel() 方法会先与动作方法前执行, 保证在动作方法中调用实体类对象已经赋值完毕;
+3.细节补充
+        a.创建项目时可以选Java,也可以选Java enterprise,前者需要手动配置Tomcat环境,后者自带Tomcat
+        b.对于struts.xml 中没有提示的问题,可以在项目配置的models-struts配置中struts-default.xml配置文件;
+        c.action编写时别忘了采用继承ActionSupport类的方式;
